@@ -1,9 +1,9 @@
 const categories = [
-    { label: "Mais assistidos", active: true, link: "/mais-assistidos"},
-    { label: "Mais votados", active: true, link: "/mais-votados"},
-    { label: "Novidades", active: true, link: "/novidades"},
-    { label: "Top 10", active: true, link: "/top10"},
-    { label: "Gêneros", active: true, link: "/generos"},
+    { label: "Mais assistidos", active: true,  link: "/mais-assistidos"},
+    { label: "Mais votados"   , active: false, link: "/mais-votados"},
+    { label: "Novidades"      , active: false, link: "/novidades"},
+    { label: "Top 10"         , active: false, link: "/top10"},
+    { label: "Gêneros"        , active: false, link: "/generos"},
  ];
 
 export function NavBar() {
