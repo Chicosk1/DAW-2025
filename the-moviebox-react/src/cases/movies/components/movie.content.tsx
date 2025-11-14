@@ -1,9 +1,11 @@
 import { useEffect, useState } from "react"
 import { MovieService, type MovieDTO } from "../services/movie.service"
 import { MovieCard } from "./movie-card";
+import { useMovies } from "../hooks/use-hook";
 
 export function MovieContent() {
 
+    const { setSelectedMovie} = useMovies();
     const [movies, setMovies] = useState<MovieDTO[]>([]);
     const [isLoading, setIsLoading] = useState<boolean>(false);
 
@@ -12,8 +14,11 @@ export function MovieContent() {
 
         MovieService.list().then((result) => {
             setMovies(result)
-        })
-        .finally(() => {
+            
+            const index = Math.floor(Math.random() * result.length)
+            setSelectedMovie(result[0])
+
+        }).finally(() => {
             setIsLoading(false);
         })
 

@@ -1,40 +1,55 @@
+import { MovieGenres }         from "../../cases/movies/components/movie-genger";
+import { useMovies }           from "../../cases/movies/hooks/use-hook"
+import { useState, useEffect } from "react";
+
 export function Highlight() {
+
+    const { selectedMovie } = useMovies();
+    const [isLoading, setIsLoading] = useState<boolean>(true);
+
+    useEffect(() => (
+
+        setIsLoading(!selectedMovie)
+
+    ), [selectedMovie])
+
     return (
-        <section className="relative flex bg-[url('../../../public/img/etT14XfDEqhQZdD47ywpyihXPyW.jpg')] bg-position-[left_calc((50vw-170px)-340px)_top] bg-cover">
-            <div className="absolute top-0 left-0 w-full h-full z-1 bg-linear-to-r from-[#111111] from-[calc((50vw-70px)-340px)] via-[#111111b3] via-1/2 to-[#111111b3]"></div>
+        isLoading ? (
+            <div className="flex justify-center itens-center">
+                <p className="text-2xl text-center text-white">Carregado...</p>
+            </div>
+        ) : (
+            <section className="flex bg-position-[left_calc((50vw-170px)-340px)_top] bg-cover relative"
+                style={{
+                    backgroundImage: `url(${selectedMovie.highlight})`
+                }}>
+                <div className="absolute inset-0 z-10 bg-linear-to-r from-[#111] from-[calc((50vw-70px)-340px)] via-[#111]/70 via-50% to-[#111]/70"></div>
+                <div className="container relative z-20 mx-auto flex gap-8 py-8">
+                    <img className="rounded-lg" src={selectedMovie.image} alt="Capa Filme" />
+                    <div className="flex flex-col">
+                        <h2 className="text-5xl font-normal text-white">{selectedMovie.title}</h2>
 
-            <div className="relative z-2 flex gap-8 py-8 container mx-auto">
-                <img className="rounded-lg"
-                     src="../../../public/img/q5pXRYTycaeW6dEgsCrd4mYPmxM.jpg"
-                />
 
-                <div className="flex flex-col">
-                    <h2 className="text-[2.5rem] font-normal">Como Treinar o Seu Dragão</h2>
 
-                    <div className="text-[0.8rem] my-[0.6rem]">
-                        <span className="bg-white/20 px-[0.8rem] py-[0.3rem] rounded-[20px]">Fantasia</span>
-                        <span className="bg-white/20 px-[0.8rem] py-[0.3rem] rounded-[20px]">Família</span>
-                        <span className="bg-white/20 px-[0.8rem] py-[0.3rem] rounded-[20px]">Ação & Aventura</span>
-                        <span className="pl-4 text-[#ccc]">2h 5m</span>
-                    </div>
+                        <MovieGenres movie={selectedMovie}>
+                            <span className="pl-4 text-gray-300">
+                                {selectedMovie.duration.replace(':', 'h ') + 'm'}
+                            </span>
+                        </MovieGenres>
 
-                    <div className="flex flex-col gap-0.5">
-                        <h3 className="text-[1.5rem] font-normal p-12 pb-2">Sinopse</h3>
-                        <p className="text-[#a0a0a0] text-[0.8rem]">
-                        Em um mundo onde dragões e humanos coexistem, um jovem viking chamado
-                        Soluço se torna amigo de um dragão ferido chamado Banguela. Juntos,
-                        eles desafiam as tradições de suas tribos e descobrem que dragões não
-                        são os monstros que todos acreditavam ser.
-                        </p>
-                    </div>
+                        <div className="flex flex-col gap-2">
+                            <h4 className="pb-2 pt-12 text-2xl font-normal text-white">Sinopse</h4>
+                            <p className="text-sm text-gray-400">{selectedMovie.sinopse}</p>
 
-                    <div className="flex gap-4 my-6">
-                        <button className="bg-[#e50914] hover:bg-[#b8070f] text-white border-none px-6 py-[0.8rem] rounded-sm font-bold transition-colors duration-300 cursor-pointer">Assistir</button>
-                        <button className="bg-white/20 hover:bg-[rgba(255,255,255,0.3)] text-white border border-white/30 px-6 py-[0.8rem] rounded-sm transition-colors duration-300 cursor-pointer">Detalhes</button>
-                        <button className="bg-white/20 hover:bg-[rgba(255,255,255,0.3)] text-white border border-white/30 px-6 py-[0.8rem] rounded-sm transition-colors duration-300 cursor-pointer">+ Adicionar à Lista</button>
+                        </div>
+                        <div className="my-6 flex gap-4">
+                            <button className="cursor-pointer rounded border-none bg-[#e50914] px-6 py-3 font-bold text-white transition hover:bg-[#b8070f]">Assistir</button>
+                            <button className="cursor-pointer rounded border border-white/30 bg-white/20 px-6 py-3 text-white transition hover:bg-white/30">Detalhes</button>
+                            <button className="cursor-pointer rounded border border-white/30 bg-white/20 px-6 py-3 text-white transition hover:bg-white/30">+ Adicionar à lista</button>
+                        </div>
                     </div>
                 </div>
-            </div>
-        </section>
+            </section>
+        )
     )
 }
