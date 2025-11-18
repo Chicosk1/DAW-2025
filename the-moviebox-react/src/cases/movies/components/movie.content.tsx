@@ -5,7 +5,7 @@ import { useMovies } from "../hooks/use-hook";
 
 export function MovieContent() {
 
-    const { setSelectedMovie} = useMovies();
+    const { setSelectedMovie } = useMovies();
     const [movies, setMovies] = useState<MovieDTO[]>([]);
     const [isLoading, setIsLoading] = useState<boolean>(false);
 
@@ -16,7 +16,7 @@ export function MovieContent() {
             setMovies(result)
             
             const index = Math.floor(Math.random() * result.length)
-            setSelectedMovie(result[0])
+            setSelectedMovie(result[index])
 
         }).finally(() => {
             setIsLoading(false);

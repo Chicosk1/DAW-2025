@@ -8,7 +8,7 @@ export function MovieCard({
     movie
 }:MovieCardProps) {
 
-    const{ setSelectedMovie} = useMovies();
+        const{ setSelectedMovie } = useMovies();
 
     function handleSelect(movie:MovieDTO){
         setSelectedMovie(movie);

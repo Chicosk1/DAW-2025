@@ -1,17 +1,16 @@
 import { api } from "../../../lib/axios";
 
 export type MovieDTO = {
-    title: string;
-    year : number;
-    image: string;
-
-    genres: string;
-    duration:string;
-    sinopse:string;
-    highlight:string;
+    title     : string;
+    year      : number;
+    image     : string;
+    genres    : string;
+    duration  : string;
+    sinopse   : string;
+    highlight : string;
 }
 
-const _ENDPOINT = '/movies?key=380ca5e0';
+const _ENDPOINT = '/movies?key=347a9dd0';
 
 export const MovieService = {
     async list(): Promise<MovieDTO[]> {
