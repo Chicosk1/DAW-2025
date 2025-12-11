@@ -1,0 +1,65 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f2f2f2;
+}
+
+/* Cabeçalho */
+.cabecalho {
+    background-color: #1f1f1f;
+    color: white;
+    padding: 20px;
+    text-align: center;
+}
+
+/* Área de busca */
+.area-busca {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.area-busca input {
+    width: 300px;
+    padding: 10px;
+    border-radius: 6px;
+    border: 1px solid #aaa;
+}
+
+/* Destaque */
+.destaque {
+    text-align: center;
+    margin-top: 30px;
+}
+
+/* Card */
+.card {
+    background: white;
+    width: 350px;
+    margin: 20px auto;
+    border-radius: 10px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+    overflow: hidden;
+}
+
+.card img {
+    width: 100%;
+}
+
+.conteudo-card {
+    padding: 15px;
+}
+
+.conteudo-card h3 {
+    margin: 0;
+    font-size: 20px;
+}
+
+.ano {
+    color: #666;
+    margin: 4px 0;
+}
+
+.descricao {
+    margin-top: 10px;
+    font-size: 14px;
+}
